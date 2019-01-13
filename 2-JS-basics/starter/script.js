@@ -79,7 +79,7 @@ console.log(typeof x);
 * 
 * Operator precedence
 *  
-*/
+*
 var now = 2018;
 var yearJohn = 1989;
 var fullAge = 18;
@@ -109,6 +109,7 @@ console.log(x);
 
 x++;
 console.log(x);
+*/
 
 /**********************************************
  * 
@@ -148,5 +149,101 @@ isBMIMarkHigher = bmiMark > bmiJohn;
 
 console.log(bmiMark, bmiJohn);
 console.log("Is Mark's BMI higher than John's? " + isBMIMarkHigher);
+
+var firstName = "John";
+var age = 22;
+
+/**********************************
+ * 
+ * Ternary operator
+
+age >= 18 ? console.log(firstName + " drinks beer.")
+    : console.log(firstName + " drinks juice.");
+
+/**********************************
+ * 
+ * Switch statement
+ * * *
+ var job = "nothing";
+ 
+ switch(job) {
+    
+    case "teacher":
+        console.log(firstName + " is a teacher.");
+        break;
+    case "instructor":
+        console.log(firstName + " is a instructor.");
+        break;
+    
+    default:
+        console.log(firstName + " is a man.");
+        break;
+ }
+ 
+ /*****************************************
+  * 
+  * Truthy and Falsy
+  * 
+  *
+  * **********************************
+  
+//  falsy values: undefined, null, 0, '', NaN
+//  truthy values: NOT falsy values
+
+var height;
+
+height = 0;
+
+if (height || height === 0) {
+    console.log("Variable is defined");
+}else {
+    console.log("Variable has NOT been defined");
+}
+
+if (height == '23') {
+    console.log("Type coercion");
+}
+*/
+/*****************************
+* CODING CHALLENGE 2
 */
 
+/*
+John and Mike both play basketball in different teams. In the latest 3 games, John's team scored 89, 120 and 103 points, while Mike's team scored 116, 94 and 123 points.
+
+1. Calculate the average score for each team
+2. Decide which teams wins in average (highest average score), and print the winner to the console. Also include the average score in the output.
+3. Then change the scores to show different winners. Don't forget to take into account there might be a draw (the same average score)
+
+4. EXTRA: Mary also plays basketball, and her team scored 97, 134 and 105 points. Like before, log the average winner to the console. HINT: you will need the && operator to take the decision. If you can't solve this one, just watch the solution, it's no problem :)
+5. Like before, change the scores to generate different winners, keeping in mind there might be draws.
+
+GOOD LUCK 😀
+
+
+var johnsTeamScored = [89, 120, 103];
+var mikesTeamScored = [116, 94, 123];
+var marysTeamScored = [97, 134, 105];
+
+var getAverageScore = function(scores) {
+    return scores.reduce(function(combine, init, i, arr) {
+        return combine + init / arr.length;
+    }, 0);
+};
+
+var avgScores = {
+    "john": getAverageScore(johnsTeamScored),
+    "mike": getAverageScore(mikesTeamScored),
+    "mary": getAverageScore(marysTeamScored)
+};
+
+var highestAverageScore = Math.max(...Object.values(avgScores));
+
+Object.keys(avgScores).filter(function(name, i, arr) {
+    var avgScore = avgScores[name];
+   if (avgScore === highestAverageScore) {
+       console.log(name + "'s team won and the average score is " + avgScore);
+   } 
+});
+
+*/
